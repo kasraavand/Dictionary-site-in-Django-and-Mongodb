@@ -1,0 +1,146 @@
+{% load staticfiles %}
+<html>
+<link rel="stylesheet" href="{% static 'css/default.css' %}">
+<link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+<div id="header-wrapper">
+<head>
+<title>{{ head_title }}</title>
+</head>
+<body onload="javascript:getChar();">
+<div id="112"></div>
+<div id="banner-wrapper">
+	<div id="banner" class="container">
+		<div class="title">
+			<h2>PersDic an English To Perian Dictionary</h2>
+			<span class="byline">translate your word and impprove this dic</span>
+<ul>
+<span class="byline">{{ athlete }}</span>
+<span class="byline2">{{ athlete2 }}</span>
+</ul>
+<form action="" method="get">
+Enter Your Word:
+<input class= "inp" size="40" type="text" name='word' onkeyup="GetChar (event);"/>
+
+
+<textarea class= "inp2" rows="20" cols="75">{{mean}}</textarea>
+		</div>
+			<input type="submit" class="button" value="Tranaslate">
+</form>
+		</ul>
+	</div>
+</div>
+</div>
+<img src="{% static "image/mypic.gif" %}" alt="My image"/>
+<p>{{page_body}}</p>
+<div id="menu">
+</div>
+<form>
+  <select class= 'sel' name="favoritefood" id="favoritefood" multiple="multiple" size="10" onclick="myfunction();">
+    {% for select in select_list %}
+    <option>{{select}}</option>
+    {% endfor %}
+  </select>
+</form>
+<script type="text/javascript">
+
+function myfunction() { 
+var first = document.getElementById("textbox1").value;
+ var second = document.getElementById("textbox2").value; 
+var answer =parseFloat(first)+parseFloat(second);
+
+var textbox3 = document.getElementById("favoritefood");
+//textbox3.onchange= function (){fieldcheck();}
+//fieldcheck();
+alert(textbox3.options[textbox3.selectedIndex].value)
+//texbox3.value = 'EQUALS';
+ } 
+</script>
+ <body> 
+<input type="text" name="textbox1" id="textbox1" /> + <input type="text" name="textbox2" id="textbox2" /> 
+<input type="submit" name="button" id="button1" onclick="myfunction()" value="=" />
+<br/>
+Your answer is:--
+<input type="text" name="textbox3" id="textbox3" readonly="true"/>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2014 persDIc.com. All rights reserved. | Photos by <a href="http://persdic.com/">persdic</a> | Design by <a href="http://www.kasra.org/" rel="nofollow">kasra</a>.</p>
+</div>
+<form method="GET" action="cgi-bin/register.pl"
+name="sampleForm" onsubmit="return validateForm(this)">
+First Name: <input type="text" size="30" name="name1" id="name1"
+onchange="isNotEmpty(this)" /><br />
+Last Name: <input type="text" size="30" name="name2" id="name2"
+onchange="isNotEmpty(this)" /><br />
+Email Address: <input type="text" size="30" name="eMail" id="eMail"
+onchange="if (isNotEmpty(this)) {isEMailAddr(this)}" /><br />
+Your Region: <select name="continent" id="continent">
+<option value="" selected>Choose One:</option>
+<option value="Africa">Africa</option>
+<option value="Asia">Asia</option>
+<option value="Australia">Australia/Pacific</option>
+<option value="Europe">Europe</option>
+<option value="North America">North America</option>
+<option value="South America">South America</option>
+</select><br />
+Licensing Terms:
+<input type="radio" name="accept" id="accept1" value="agree" />I agree
+<input type="radio" name="accept" id="accept2" value="refuse" />I do not agree
+<br />
+<input type="reset" /> <input type="submit" />
+</form>
+<script type="text/javascript"
+
+</script>
+<style type="text/css">
+#draw-target {
+width:480px; height:320px;
+background-color:#000; position:relative;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+(function() {
+var fastSin = function(steps) {
+var table = [],
+ang = 0,
+angStep = (Math.PI * 2) / steps;
+do {
+table.push(Math.sin(ang));
+ang += angStep;
+} while (ang < Math.PI * 2);
+return table;
+};
+var sinTable = fastSin(4096),
+$drawTarget = $('#draw-target'),
+divs = '',
+i, bars, x = 0;
+var drawGraph = function(ang, freq, height) {
+var height2 = height * 2;
+for (var i = 0; i < 480; i++) {
+bars[i].style.top =
+160 - height + sinTable[(ang + (i * freq)) & 4095]
+* height + 'px';
+bars[i].style.height = height2 + 'px';
+}
+};
+for (i = 0; i < 480; i++) {
+divs +=
+'<div style = "position:absolute;width:1px;height:40px;'
++ 'background-color:#0d0; top:0px; left: '
++ i + 'px;"></div>';
+}
+$drawTarget.append(divs);
+bars = $drawTarget.children();
+setInterval(function() {
+drawGraph(x * 50, 32 - (sinTable[(x * 20) & 4095] * 16),
+50 - (sinTable[(x * 10) & 4095] * 20));
+x++;
+}, 20);
+})();
+});
+</script>
+</head>
+<div id="draw-target">
+</div>
+</body>
+</html>
+

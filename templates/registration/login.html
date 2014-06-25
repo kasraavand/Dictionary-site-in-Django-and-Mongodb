@@ -1,0 +1,37 @@
+{% block content %}
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Signin </title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+  </head>
+<body>
+{% if form.has_errors %}
+<p>Your username and password didn't match.
+Please try again.</p>
+{% endif %}
+   <div class="container">
+      <form class="form-signin" role="form" method="post" action=".">{% csrf_token %}
+        <h2 class="form-signin-heading">Please sign in</h2>
+       {{form.as_p}}
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value= "login">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+</body>
+{% endblock %}
