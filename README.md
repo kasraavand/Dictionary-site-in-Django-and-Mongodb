@@ -1,5 +1,6 @@
-#a site that writen in django and mongodb as it's database engine with the following property:
-<p>registeration and login</p>
-<p>find the meaning of words </p>
-<p>ability to update the dictionary</p>
-<p>and other future ...</p>
+#A web app writen in django and mongodb which supply the following features:
+
+<p>Registeration and login</p>
+<p>Find the meaning of words </p>
+<p>Ability to update the dictionary</p>
+<p>And another features ...</p>
